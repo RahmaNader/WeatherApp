@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View,SafeAreaView } from 'react-native';
-import CurrentWeather from './src/components/CurrentWeather';
+//import CurrentWeather from './src/components/CurrentWeather';
 import { StatusBar } from 'expo-status-bar';
 import UpcomingWeather from './src/components/UpcomingWeather';
 const App = () => {
@@ -9,7 +9,6 @@ const App = () => {
     <SafeAreaView style={styles.wrapper}>
     <StatusBar style="auto" />
     <View style={styles.container}>
-      <CurrentWeather />
       <UpcomingWeather />
     </View>
     </SafeAreaView>
