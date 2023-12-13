@@ -50,6 +50,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     width: '50%',
+    marginVertical: 10,
+    marginHorizontal: 10,
   },
   highlow: {
     fontSize: 20,
