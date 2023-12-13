@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     justifyContent: 'center',
     backgroundColor: '#ccccff',
-    width: '100%', // set width to match parent
-    height: '100%', // set height to match parent
+    width: '100%', 
+    height: '100%', 
   },
   container: {
     flex: 1, //means the view should take up the entire screen because it is the only child of the SafeAreaView
