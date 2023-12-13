@@ -1,21 +1,33 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView,FlatList } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView,FlatList, ImageBackground,StatusBar } from 'react-native';
 import {Feather} from '@expo/vector-icons';
+import upcomingBackground from '../../assets/upcoming-background.jpg';
+import PropTypes from 'prop-types';
+
+
 
 const Item = (props) => {
     const {dt_txt, min,max, condition} = props
     return(
         <View style={styles.itemcolumn}>
             <View style={styles.itemrow}>
-                <Feather name="sun" size={25} color="red" />
+                <Feather style={styles.itemfeather} name="sun" size={25} color="red" />
                 <Text>{dt_txt}</Text>
             </View>
-            <Text>min: {min}</Text>
-            <Text>max: {max}</Text>
+            <View style={styles.minmax}>
+            <Text>Minimum Temprature: {min}</Text>
+            <Text>Maximum Temprature: {max}</Text>
+            </View>
         </View>
     )
 }
 
+Item.propTypes = {
+    dt_txt: PropTypes.string.isRequired,
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+    condition: PropTypes.string.isRequired,
+  };
 
 const DATA = [
     {
@@ -125,48 +137,50 @@ const UpcomingWeather = () => {
             max={item.main.temp_max}
         />
     )
-    return(
+    return (
         <SafeAreaView style={styles.wrapper}>
-        <View style={styles.container}>
-            <Text style={styles.upcoming}>Upcoming Weather</Text>
-            <FlatList 
-                style={styles.list}
-                data={DATA}
-                renderItem={renderItem}
-            />
-        </View>
+            <StatusBar style="auto" />
+            <ImageBackground source={upcomingBackground} style={styles.image} >
+            <View style={styles.container}>
+                <Text style={styles.upcoming}>Upcoming Weather</Text>
+                <FlatList
+                    style={styles.list}
+                    data={DATA}
+                    renderItem={renderItem}
+                />
+            </View>
+            </ImageBackground>
         </SafeAreaView>
     )
 }
 const styles = StyleSheet.create({
     wrapper: {
-      flex: 1,
-      alignItems: 'center', 
-      justifyContent: 'center',
-      backgroundColor: '#ccccff',
-      width: '100%', // set width to match parent
-      height: '100%', // set height to match parent
-    },
-    container: {
-        flex: 1, //means the view should take up the entire screen because it is the only child of the SafeAreaView
+        flex: 1,
         alignItems: 'center', 
         justifyContent: 'center',
-        padding: 10,
+        backgroundColor: '#ccccff', 
+        marginTop: StatusBar.currentHeight || 0,
+        width: '100%', 
+        height: '100%',
+      },
+    container: {
+        flex: 1,
+        padding: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     upcoming: {
         fontSize: 30,
-        color: 'black',
+        color: 'white',
         marginVertical: 10,
     },
     list: {
-        width: '100%',
         marginVertical: 10,
         padding: 10,
     },
     itemcolumn: {
         flexDirection: 'column',
         justifyContent: 'space-between',
-        alignItems: 'flex-start',
         marginVertical: 10,
         backgroundColor: 'rgba(255, 255, 255, 0.7)',
         borderRadius: 10,
@@ -176,13 +190,25 @@ const styles = StyleSheet.create({
     },
     itemrow: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         alignItems: 'center',
         marginVertical: 10,
         borderRadius: 10,
         marginHorizontal: 10,
         fontSize: 20,
     },
+    itemfeather: {
+        marginRight: 10,
+    },
+    minmax: {
+        alignItems: 'center',
+        marginVertical: 10,
+        marginHorizontal: 10,
+        fontSize: 20,
+    },
+    image: {
+        flex: 1,
+      },
   });
 export default UpcomingWeather
 
@@ -206,5 +232,15 @@ updateProps: a function that can be called to update the props of the item
 
 what's keyExtractor: 
 keyExtractor is a function that returns a unique key for each item in the list.
+
+it's a standard practice to provide the same image in three sizes in order to support different screen sizes.
+
+<Image source={upcomingBackground}
+                style={styles.image} />
+image: {
+        width: 100,
+        height: 100,
+        borderRadius: 10,
+    },
 
 */
