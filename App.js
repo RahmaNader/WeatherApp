@@ -1,12 +1,14 @@
 //import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import React from 'react';
+import {Feather} from '@expo/vector-icons';
 
 const App = () => {
   return(
     <SafeAreaView style={styles.wrapper}>
     <View style={styles.container}>
-      <Text style={styles.temp}>Temperature</Text>
+      <Feather name="sun" size={75} color="yellow" />
+      <Text style={styles.temp}>17</Text>
       <Text style={styles.feels}>Feels Like</Text>
       <View style={styles.highlowwrapper}>
         <Text style={styles.highlow}>High: 8</Text>
@@ -33,10 +35,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '95%', // set width to match parent
     height: '100%', // set height to match parent
+    padding: 10,
   },
   temp: {
     fontSize: 30,
-    color: 'black'
+    color: 'black',
+    marginVertical: 10,
   },
   feels: {
     fontSize: 25,
@@ -51,15 +55,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     marginVertical: 10,
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)', // This is fully transparent white
     padding: 10,
     borderRadius: 10,
   },
   bodywrapper: {
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
-    padding: 10,
+    paddingVertical:10,
+    paddingHorizontal: 20,
     borderRadius: 10,
     marginVertical: 10,
     width: '95%', // set width to match parent
