@@ -2,14 +2,17 @@ import React from 'react';
 import { StyleSheet, View,SafeAreaView } from 'react-native';
 //import CurrentWeather from './src/components/CurrentWeather';
 import { StatusBar } from 'expo-status-bar';
-import UpcomingWeather from './src/components/UpcomingWeather';
+//import UpcomingWeather from './src/components/UpcomingWeather';
+import OurChild from './src/components/OurChild';
 const App = () => {
   console.log("App executed")
   return(
     <SafeAreaView style={styles.wrapper}>
     <StatusBar style="auto" />
     <View style={styles.container}>
-      <UpcomingWeather />
+      <OurChild message={'Hello'} />
+      <OurChild message={'Greetings'}/>
+      <OurChild message={'Goodbye'}/>
     </View>
     </SafeAreaView>
   )

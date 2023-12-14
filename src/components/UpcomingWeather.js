@@ -140,7 +140,6 @@ const UpcomingWeather = () => {
     return (
         <SafeAreaView style={styles.wrapper}>
             <StatusBar style="auto" />
-            <ImageBackground source={upcomingBackground} style={styles.image} >
             <View style={styles.container}>
                 <Text style={styles.upcoming}>Upcoming Weather</Text>
                 <FlatList
@@ -149,7 +148,6 @@ const UpcomingWeather = () => {
                     renderItem={renderItem}
                 />
             </View>
-            </ImageBackground>
         </SafeAreaView>
     )
 }
@@ -242,5 +240,12 @@ image: {
         height: 100,
         borderRadius: 10,
     },
+<ImageBackground source={upcomingBackground} style={styles.image} >
+</ImageBackground>
+
+
+props are used to pass data from one component to another, and they are read-only,
+which means that the data coming from the parent should not be changed by child components,
+but the child components can use the data to display something else.
 
 */
