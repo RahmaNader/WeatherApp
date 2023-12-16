@@ -1,33 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView,FlatList, ImageBackground,StatusBar } from 'react-native';
-import {Feather} from '@expo/vector-icons';
-import upcomingBackground from '../../assets/upcoming-background.jpg';
-import PropTypes from 'prop-types';
+import { StyleSheet, Text, View, SafeAreaView,FlatList} from 'react-native';
+//import {Feather} from '@expo/vector-icons';
+//import upcomingBackground from '../../assets/upcoming-background.jpg';
+import ListItem from '../components/ListItem';
 
 
-
-const Item = (props) => {
-    const {dt_txt, min,max, condition} = props
-    return(
-        <View style={styles.itemcolumn}>
-            <View style={styles.itemrow}>
-                <Feather style={styles.itemfeather} name="sun" size={25} color="red" />
-                <Text>{dt_txt}</Text>
-            </View>
-            <View style={styles.minmax}>
-            <Text>Minimum Temprature: {min}</Text>
-            <Text>Maximum Temprature: {max}</Text>
-            </View>
-        </View>
-    )
-}
-
-Item.propTypes = {
-    dt_txt: PropTypes.string.isRequired,
-    min: PropTypes.number.isRequired,
-    max: PropTypes.number.isRequired,
-    condition: PropTypes.string.isRequired,
-  };
 
 const DATA = [
     {
@@ -130,79 +107,37 @@ const DATA = [
 
 const UpcomingWeather = () => {
     const renderItem = ({item}) => (
-        <Item 
+        <ListItem 
             condition={item.weather[0].description}
             dt_txt={item.dt_txt}
             min={item.main.temp_min}
             max={item.main.temp_max}
         />
     )
+    const {container, upcoming, list} = styles
     return (
-        <SafeAreaView style={styles.wrapper}>
-            <StatusBar style="auto" />
-            <View style={styles.container}>
-                <Text style={styles.upcoming}>Upcoming Weather</Text>
-                <FlatList
-                    style={styles.list}
-                    data={DATA}
-                    renderItem={renderItem}
-                />
+        <SafeAreaView>
+            <View style={container}>
+                <Text style={upcoming}>Upcoming Weather</Text>
+                <FlatList style={list} data={DATA} renderItem={renderItem}/>
             </View>
         </SafeAreaView>
     )
 }
 const styles = StyleSheet.create({
-    wrapper: {
-        flex: 1,
-        alignItems: 'center', 
-        justifyContent: 'center',
-        backgroundColor: '#ccccff', 
-        marginTop: StatusBar.currentHeight || 0,
-        width: '100%', 
-        height: '100%',
-      },
     container: {
         flex: 1,
-        padding: 50,
+        padding: 20,
         alignItems: 'center',
         justifyContent: 'center',
     },
     upcoming: {
         fontSize: 30,
-        color: 'white',
+        color: '#660066',
         marginVertical: 10,
     },
     list: {
         marginVertical: 10,
-        padding: 10,
-    },
-    itemcolumn: {
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        marginVertical: 10,
-        backgroundColor: 'rgba(255, 255, 255, 0.7)',
-        borderRadius: 10,
-        padding: 10,
-        marginHorizontal: 10,
-        fontSize: 20,
-    },
-    itemrow: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        marginVertical: 10,
-        borderRadius: 10,
-        marginHorizontal: 10,
-        fontSize: 20,
-    },
-    itemfeather: {
-        marginRight: 10,
-    },
-    minmax: {
-        alignItems: 'center',
-        marginVertical: 10,
-        marginHorizontal: 10,
-        fontSize: 20,
     },
     image: {
         flex: 1,
@@ -247,5 +182,7 @@ image: {
 props are used to pass data from one component to another, and they are read-only,
 which means that the data coming from the parent should not be changed by child components,
 but the child components can use the data to display something else.
+props are immutable, which means that they cannot be changed once they are set,
+unidirectional data flow, which means that data flows from parent to child components,
 
 */

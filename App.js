@@ -1,19 +1,14 @@
 import React from 'react';
-import { StyleSheet, View,SafeAreaView } from 'react-native';
+import { StyleSheet,SafeAreaView } from 'react-native';
 //import CurrentWeather from './src/components/CurrentWeather';
 import { StatusBar } from 'expo-status-bar';
-//import UpcomingWeather from './src/components/UpcomingWeather';
-import OurChild from './src/components/OurChild';
+import City from './src/screens/City';
 const App = () => {
   console.log("App executed")
   return(
     <SafeAreaView style={styles.wrapper}>
-    <StatusBar style="auto" />
-    <View style={styles.container}>
-      <OurChild message={'Hello'} />
-      <OurChild message={'Greetings'}/>
-      <OurChild message={'Goodbye'}/>
-    </View>
+      <StatusBar style="auto" />
+      <City />
     </SafeAreaView>
   )
 }
@@ -31,7 +26,6 @@ const styles = StyleSheet.create({
     flex: 1, 
     alignItems: 'center', 
     justifyContent: 'center',
-    padding: 10,
   },
 });
 export default App
@@ -55,5 +49,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+a good approach is to split the code into components and screens and then import them into App.js.
+screens are fully functional on their own and can be used as a standalone screen in the app,
+but components are not fully functional on their own and need to be imported into a screen to be used.
 
 */
