@@ -4,16 +4,14 @@ import {
     Text,
     SafeAreaView,
     ImageBackground,
-    StatusBar,
     View,
 } from 'react-native'
-import {Feather} from '@expo/vector-icons';
+import Icon from '../components/IconText'
 
 const City = () => {
-    const { wrapper, cityname, country, image,text,population,container,sunsetsunrise,icon } = styles
+    const { wrapper, cityname, country, image,text,population,container,sunsetsunrise} = styles
     return (
         <SafeAreaView style={wrapper}>
-            <StatusBar style="auto" />
             <ImageBackground
                 source={require('../../assets/city-background.jpg')}
                 style={image}
@@ -22,13 +20,13 @@ const City = () => {
                     <Text style={[text,cityname]}>Helsinki</Text>
                     <Text style={[text,country]}>Finland</Text>
                     <View style={population}>
-                        <Feather name="users" size={24} color="rgb(102, 0, 102)" style={icon} />
+                        <Icon iconName="users" iconColor="rgb(102, 0, 102)" iconSize={25} bodyText="" textStyle={text} />
                         <Text style={text}>8000</Text>
                     </View>
                     <View style={sunsetsunrise}>
-                        <Feather name="sunrise" size={24} color="rgb(102, 0, 102)" style={icon} />
+                        <Icon iconName="sunrise" iconColor="rgb(102, 0, 102)" iconSize={25} bodyText="" textStyle={text}  />
                         <Text style={text}>05:00</Text>
-                        <Feather name="sunset" size={24} color="rgb(102, 0, 102)" style={icon} />
+                        <Icon iconName="sunset" iconColor="rgb(102, 0, 102)" iconSize={25} bodyText="" textStyle={text}  />
                         <Text style={text}>21:00</Text>
                     </View>
                 </View>
@@ -41,7 +39,6 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         height: '100%',
-        marginTop: StatusBar.currentHeight || 0,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -83,16 +80,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,
+        alignSelf: 'center',
     },
     sunsetsunrise: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,
-    },
-    icon: {
-        marginLeft: 10,
-        marginRight: 10,
     },
 })
 export default City

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView,FlatList} from 'react-native';
+import { StyleSheet,View, SafeAreaView,FlatList} from 'react-native';
 //import {Feather} from '@expo/vector-icons';
 //import upcomingBackground from '../../assets/upcoming-background.jpg';
 import ListItem from '../components/ListItem';
@@ -114,27 +114,31 @@ const UpcomingWeather = () => {
             max={item.main.temp_max}
         />
     )
-    const {container, upcoming, list} = styles
+    const {container,list, wrapper} = styles
     return (
-        <SafeAreaView>
+        <SafeAreaView style={wrapper}>
             <View style={container}>
-                <Text style={upcoming}>Upcoming Weather</Text>
                 <FlatList style={list} data={DATA} renderItem={renderItem}/>
             </View>
         </SafeAreaView>
     )
 }
 const styles = StyleSheet.create({
-    container: {
+    wrapper: {
         flex: 1,
-        padding: 20,
-        alignItems: 'center',
+        alignItems: 'center', 
         justifyContent: 'center',
-    },
+        backgroundColor: '#ccccff',
+      },
+      container: {
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center',
+      },
     upcoming: {
         fontSize: 30,
         color: '#660066',
-        marginVertical: 10,
+        marginVertical: 30,
     },
     list: {
         marginVertical: 10,

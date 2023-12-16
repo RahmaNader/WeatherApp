@@ -1,23 +1,24 @@
 //import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import React from 'react';
-import {Feather} from '@expo/vector-icons';
-
+import Icon from '../components/IconText'
+import { WeatherType } from '../utilities/WeatherType';
 const CurrentWeather = () => {
+  const { wrapper, container, temp, feels, highlowwrapper, highlow, bodywrapper, description, message } = styles
   return(
-    <SafeAreaView style={styles.wrapper}>
-    <View style={styles.container}>
-      <Feather name="sun" size={75} color="yellow" />
-      <Text style={styles.temp}>17</Text>
-      <Text style={styles.feels}>Feels Like: 20</Text>
-      <View style={styles.highlowwrapper}>
-        <Text style={styles.highlow}>High: 25</Text>
-        <Text style={styles.highlow}>Low: 18</Text>
+    <SafeAreaView style={wrapper}>
+    <View style={container}>
+      <Icon iconName="sun" iconColor="yellow" iconSize={150} bodyText="" textStyle={temp} />
+      <Text style={temp}>17</Text>
+      <Text style={feels}>Feels Like: 20</Text>
+      <View style={highlowwrapper}>
+        <Text style={highlow}>High: 25</Text>
+        <Text style={highlow}>Low: 18</Text>
       </View>
       </View>
-      <View style={styles.bodywrapper}>
-        <Text style={styles.description}>Its sunny</Text>
-        <Text style={styles.message}>Its perfect t-shirt weather</Text>
+      <View style={bodywrapper}>
+        <Text style={description}>Its sunny</Text>
+        <Text style={message}>{WeatherType['Thunderstorm'].message}</Text>
       </View>
     </SafeAreaView>
   )
@@ -33,14 +34,12 @@ const styles = StyleSheet.create({
     flex: 1, //means the view should take up the entire screen because it is the only child of the SafeAreaView
     alignItems: 'center', 
     justifyContent: 'center',
-    width: '95%', // set width to match parent
-    height: '100%', // set height to match parent
-    padding: 10,
   },
   temp: {
-    fontSize: 30,
-    color: 'black',
+    fontSize: 50,
+    color: 'rgb(102, 0, 102)',
     marginVertical: 10,
+    fontWeight: 'bold',
   },
   feels: {
     fontSize: 25,
@@ -74,7 +73,8 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 20,
-    color: 'black'
+    color: 'rgb(102, 0, 102)',
+    fontWeight: 'bold',
   },
   message: {
     fontSize: 15,

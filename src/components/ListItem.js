@@ -1,17 +1,17 @@
 import React from 'react'
 import { StyleSheet, Text, View} from 'react-native';
-import {Feather} from '@expo/vector-icons';
 import PropTypes from 'prop-types';
+import Icon from '../components/IconText'
 
 
 
 const ListItem = (props) => {
     const {dt_txt, min,max, condition} = props
-    const {itemcolumn, itemrow, itemfeather, minmax} = styles
+    const {itemcolumn, itemrow, minmax} = styles
     return(
         <View style={itemcolumn}>
             <View style={itemrow}>
-                <Feather style={itemfeather} name="sun" size={25} color="red" />
+            <Icon iconName="sun" iconColor="red" iconSize={25} bodyText="" />
                 <Text>{dt_txt}</Text>
             </View>
             <View style={minmax}>
@@ -49,9 +49,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginHorizontal: 10,
         fontSize: 20,
-    },
-    itemfeather: {
-        marginRight: 10,
     },
     minmax: {
         alignItems: 'center',
